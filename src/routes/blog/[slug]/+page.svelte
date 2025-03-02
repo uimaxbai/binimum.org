@@ -13,7 +13,7 @@
 <article>
 	<hgroup>
 		<h1>{data.meta.title}</h1>
-		<p>Published at {new Date(data.meta.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
+		<p>{data.meta.author}<span style="color: lightgray; margin: 0 0.3em;">|</span><i>{new Date(data.meta.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}</i></p>
 	</hgroup>
 
 	<div class="tags">
@@ -31,6 +31,7 @@
 	article {
 		max-inline-size: var(--size-content-3);
 		margin-inline: auto;
+		padding: 1em;
 
 		h1 {
 			text-transform: capitalize;
@@ -43,13 +44,26 @@
 
 		.tags {
 			display: flex;
-			gap: var(--size-3);
-			margin-top: var(--size-7);
+			gap: var(--size-2);
+			// margin-top: var(--size-5);
+			margin-bottom: var(--size-3);
 
 			> * {
-				padding: var(--size-2) var(--size-3);
+				padding: var(--size-1) var(--size-2);
 				border-radius: var(--radius-round);
 			}
+		}
+		:global(table) {
+			margin-bottom: 1em;
+		}
+		:global(blockquote) {
+			border-left: 4px solid lightgray;
+			color: #aaa;
+			border-radius: 5px 0 0 5px;
+			margin-bottom: 1em;
+		}
+		:global(blockquote :last-child) {
+			margin: 0;
 		}
 	}
 </style>

@@ -1,0 +1,12 @@
+{
+	"/": [],
+	"/about": [],
+	"/api/posts.json": [
+		"src/routes/api/posts.json/+server.ts"
+	],
+	"/blog": [],
+	"/blog/[slug]": [
+		"src/routes/blog/[slug]/+page.ts"
+	],
+	"/principles": []
+}

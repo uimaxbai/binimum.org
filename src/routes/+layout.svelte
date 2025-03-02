@@ -1,5 +1,15 @@
-<script>
+<script lang="ts">
   import '../app.css';
+
+  import 'open-props/style'
+	import 'open-props/normalize'
+	import 'open-props/buttons'
+
+  interface Props {
+    children?: import('svelte').Snippet;
+  }
+
+  let { children }: Props = $props();
 </script>
 
 <header>
@@ -19,7 +29,7 @@
 </header>
 
 <main>
-  <slot />
+  {@render children?.()}
 </main>
 
 <footer>

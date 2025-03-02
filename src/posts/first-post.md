@@ -13,6 +13,16 @@ published: true
 
 Hey friends! 👋
 
+Bye
+
+| a | b |
+|---|---|
+| c | d |
+
+> hey
+
+a
+
 ```ts
 function greet(name: string) {
 	console.log(`Hey ${name}! 👋`)

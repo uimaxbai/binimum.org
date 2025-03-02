@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   
-  let posts = [];
+  let posts = $state([]);
   
   onMount(async () => {
     try {

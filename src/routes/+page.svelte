@@ -16,7 +16,7 @@
     }
   ];
   
-  let currentTestimonial = 0;
+  let currentTestimonial = $state(0);
   
   onMount(() => {
     const interval = setInterval(() => {
