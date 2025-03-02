@@ -79,7 +79,7 @@
       {#each testimonials as _, i}
         <span class="dot" class:active={i === currentTestimonial}></span>
       {/each}
-      }
+      
     </div>
   </div>
 </section>
