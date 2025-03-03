@@ -10,6 +10,11 @@
   }
 
   let { children }: Props = $props();
+  let isNavOpen = false;
+
+  function toggleNav() {
+    isNavOpen = !isNavOpen;
+  }
 </script>
 
 <header>
@@ -18,12 +23,15 @@
       <div class="logo" style="width: 100%; height: 100%;">
         <a href="/" aria-label="Binimum" style="height: 100%; background-image: url('/icons/binimum.svg'); background-repeat: no-repeat; background-size: contain; width: 100%; display: block; color: transparent;">a</a>
       </div>
-      <ul class="nav-links"  style="list-style-type: none!important; margin: 0;">
+      <ul class="nav-links"  style="list-style-type: none!important; margin: 0;" class:is-open={isNavOpen}>
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/principles">Principles</a></li>
         <li><a href="/blog">Blog</a></li>
       </ul>
+      <button class="hamburger" on:click={toggleNav} aria-label="Toggle navigation">
+        <span class="hamburger-icon"></span>
+      </button>
     </nav>
   </div>
 </header>
@@ -90,6 +98,44 @@
     font-weight: 500;
   }
   
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .hamburger-icon {
+    width: 25px;
+    height: 2px;
+    background-color: var(--accent-color);
+    display: block;
+    position: relative;
+  }
+  
+  .hamburger-icon::before,
+  .hamburger-icon::after {
+    content: '';
+    width: 25px;
+    height: 2px;
+    background-color: var(--accent-color);
+    display: block;
+    position: absolute;
+    left: 0;
+  }
+  
+  .hamburger-icon::before {
+    top: -8px;
+  }
+  
+  .hamburger-icon::after {
+    top: 8px;
+  }
+  
+  .nav-links.is-open {
+    display: block;
+  }
+  
   main {
     min-height: calc(100vh - 180px);
   }
@@ -138,7 +184,13 @@
   
   @media (max-width: 768px) {
     .nav-links {
+      display: none;
+      flex-direction: column;
       gap: 1rem;
+    }
+    
+    .hamburger {
+      display: block;
     }
   }
 </style>

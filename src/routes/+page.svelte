@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import Carousel from './Carousel.svelte';
   
   let testimonials = [
     {
@@ -17,11 +18,20 @@
   ];
   
   let currentTestimonial = $state(0);
+  let blogPosts = $state([]);
   
-  onMount(() => {
+  onMount(async () => {
     const interval = setInterval(() => {
       currentTestimonial = (currentTestimonial + 1) % testimonials.length;
     }, 5000);
+    
+    try {
+      const response = await fetch('/api/posts.json');
+      blogPosts = await response.json();
+    } catch (error) {
+      console.error('Error loading blog posts:', error);
+      blogPosts = [];
+    }
     
     return () => clearInterval(interval);
   });
@@ -33,14 +43,16 @@
 
 <section class="hero">
   <div class="container">
-    <div class="hero-content">
-      <h1>Embrace the Bare Minimum</h1>
-      <p class="hero-subtitle">Find peace, purpose, and fulfillment through simplicity</p>
-      <div class="hero-buttons">
-        <a href="/principles" class="btn" style="border: 1px solid white;">Discover Our Principles</a>
-        <a href="/blog" class="btn btn-secondary" style="background: white; color: var(--primary-color)">Read Our Blog</a>
+    <Carousel {blogPosts}>
+      <div class="hero-content">
+        <h1>Embrace the Bare Minimum</h1>
+        <p class="hero-subtitle">Find peace, purpose, and fulfillment through simplicity</p>
+        <div class="hero-buttons">
+          <a href="/principles" class="btn" style="border: 1px solid white;">Discover Our Principles</a>
+          <a href="/blog" class="btn btn-secondary" style="background: white; color: var(--primary-color)">Read Our Blog</a>
+        </div>
       </div>
-    </div>
+    </Carousel>
   </div>
 </section>
 
