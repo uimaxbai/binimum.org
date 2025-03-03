@@ -37,8 +37,8 @@
       <h1>Embrace the Bare Minimum</h1>
       <p class="hero-subtitle">Find peace, purpose, and fulfillment through simplicity</p>
       <div class="hero-buttons">
-        <a href="/principles" class="btn">Discover Our Principles</a>
-        <a href="/blog" class="btn btn-secondary">Read Our Blog</a>
+        <a href="/principles" class="btn" style="border: 1px solid white;">Discover Our Principles</a>
+        <a href="/blog" class="btn btn-secondary" style="background: white; color: var(--primary-color)">Read Our Blog</a>
       </div>
     </div>
   </div>
@@ -260,5 +260,9 @@
     .quote {
       font-size: 1.2rem;
     }
+  }
+  a {
+    box-shadow: none!important;
+    text-shadow: none!important;
   }
 </style>
