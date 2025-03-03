@@ -1,6 +1,6 @@
 <script lang="ts">
 	// import { formatDate } from '$lib/utils'
-
+	// import { Link } from 'lucide-svelte';
 	let { data } = $props();
 </script>
 
@@ -28,6 +28,23 @@
 </article>
 
 <style lang="scss">
+	:global(*[id] > a[aria-hidden="true"] > .icon-link) {
+		display: none;
+	}
+	:global(*[id]:hover > a[aria-hidden="true"] > .icon-link) {
+		display: initial;
+	}
+	:global(.icon-link) {
+		margin-right: 0.3em;
+	}
+	:global(ul) {
+		list-style: initial!important;
+		margin-left: 2em;
+		margin-bottom: 1em;
+	}
+	:global(strong) {
+		font-weight: 700;
+	}
 	article {
 		max-inline-size: var(--size-content-3);
 		margin-inline: auto;

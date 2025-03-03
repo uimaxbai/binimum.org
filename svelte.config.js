@@ -1,6 +1,9 @@
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsvex } from 'mdsvex';
 import adapter from '@sveltejs/adapter-auto';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import remarkToc from 'remark-toc';
 
 // import { mdsvex } from 'mdsvex'
 
@@ -18,6 +21,21 @@ export default {
     vitePreprocess(),
     mdsvex({
       extensions: ['.md'],
+      rehypePlugins: [
+        rehypeSlug, 
+        [
+          rehypeAutolinkHeadings,
+          {
+            content: {
+              type: 'element',
+              tagName: 'span',
+              properties: {className: ['icon-link']},
+              children: []
+            }
+          }
+        ], 
+        remarkToc
+      ]
     })
   ],
   

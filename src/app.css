@@ -1,5 +1,7 @@
 @import '@fontsource/jetbrains-mono';
 @import '@fontsource/ibm-plex-sans';
+@import '@fontsource/ibm-plex-sans/700.css';
+@import '../node_modules/lucide-static/font/lucide.css';
 
 html {
 	/* font */
@@ -100,6 +102,10 @@ li {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+input {
+  background: #eee!important;
 }
 
 * {

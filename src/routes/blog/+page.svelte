@@ -31,19 +31,25 @@
       <div class="blog-posts">
         {#each posts as post}
           <article class="blog-post">
-            <h2><a href={`/blog/${post.slug}`}>{post.title}</a></h2>
-            <div class="post-meta">
-              <span class="post-date">{new Date(post.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}</span>
-              <span class="post-author">by {post.author}</span>
+            <img class="cover" src="/blog/covers/{post.cover}" alt="{post.alt}">
+            <div class="gradient"></div>
+            <div class="blog-inside">
+              <h2><a href={`/blog/${post.slug}`}>{post.title}</a></h2>
+              <div class="post-meta">
+                <span class="post-date">{new Date(post.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}</span>
+                <span class="post-author">by {post.author}</span>
+              </div>
+              <p class="post-excerpt">{post.description}</p>
+              <a href={`/blog/${post.slug}`} class="read-more">Read more →</a>
             </div>
-            <p class="post-excerpt">{post.description}</p>
-            <a href={`/blog/${post.slug}`} class="read-more">Read more →</a>
           </article>
         {/each}
         
       </div>
       
+      
       <aside class="blog-sidebar">
+        <!--
         <div class="sidebar-section">
           <h3>Categories</h3>
           <ul class="category-list">
@@ -54,8 +60,10 @@
             <li><a href="#">Sustainability</a></li>
           </ul>
         </div>
+        -->
         
-        <div class="sidebar-section">
+        <!--
+         <div class="sidebar-section">
           <h3>Popular Posts</h3>
           <ul class="popular-posts">
             <li><a href="#">5 Steps to Declutter Your Mind</a></li>
@@ -63,12 +71,42 @@
             <li><a href="#">Minimalist Wardrobe Essentials</a></li>
           </ul>
         </div>
+        -->
       </aside>
     </div>
   </div>
 </section>
 
 <style>
+  .cover {
+    border-radius: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  .blog-inside {
+    z-index: 2;
+    position: relative;
+    padding: 2rem;
+    background: white;
+    margin-top: 20em;
+  }
+  .gradient {
+    width: 100%;
+    height: 5em;
+    position: absolute;
+    left: 0;
+    top: 15em;
+    background: rgb(0,0,0);
+    background: -webkit-linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(255,255,255,1) 100%);
+    background: -moz-linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#ffffff",GradientType=2); 
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(255,255,255,1) 100%);
+  }
+  .post-excerpt {
+    margin: 0;
+  }
   .page-header {
     background-color: var(--primary-color);
     color: white;
@@ -97,8 +135,9 @@
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
     margin-bottom: 2rem;
+    overflow: hidden;
+    position: relative;
   }
   
   .blog-post h2 {

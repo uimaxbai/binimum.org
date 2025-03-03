@@ -15,10 +15,10 @@
 <header>
   <div class="container">
     <nav>
-      <div class="logo">
-        <a href="/">Binimum</a>
+      <div class="logo" style="width: 100%; height: 100%;">
+        <a href="/" aria-label="Binimum" style="height: 100%; background-image: url('/icons/binimum.svg'); background-repeat: no-repeat; background-size: contain; width: 100%; display: block; color: transparent;">a</a>
       </div>
-      <ul class="nav-links">
+      <ul class="nav-links"  style="list-style-type: none!important; margin: 0;">
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/principles">Principles</a></li>
@@ -28,7 +28,7 @@
   </div>
 </header>
 
-<main>
+<main data-theme="light">
   {@render children?.()}
 </main>
 
@@ -36,29 +36,21 @@
   <div class="container">
     <div class="footer-content">
       <div class="footer-section">
-        <h3>Binimum</h3>
+        <a href="/" aria-label="Binimum" style="height: 30%; margin-bottom: 1em; background-image: url('/icons/binimum.svg'); background-repeat: no-repeat; background-size: contain; width: 100%; display: block; color: transparent;">a</a>
         <p>Embracing the philosophy of bare minimum for a more meaningful life.</p>
       </div>
       <div class="footer-section">
         <h3>Quick Links</h3>
-        <ul>
+        <ul style="list-style-type: none!important; margin: 0;">
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/principles">Principles</a></li>
           <li><a href="/blog">Blog</a></li>
         </ul>
       </div>
-      <div class="footer-section">
-        <h3>Connect</h3>
-        <ul>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Facebook</a></li>
-        </ul>
-      </div>
     </div>
     <div class="copyright">
-      <p>&copy; {new Date().getFullYear()} Binimum Philosophy. All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} Binimum. All rights reserved.</p>
     </div>
   </div>
 </footer>
