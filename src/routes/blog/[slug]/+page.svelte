@@ -10,7 +10,7 @@
 	<meta property="og:title" content={data.meta.title} />
 </svelte:head>
 
-<article>
+<article style="display: flex; flex-direction: column; align-items: center; justify-content: center">
 	<hgroup>
 		<h1>{data.meta.title}</h1>
 		<p>{data.meta.author}<span style="color: lightgray; margin: 0 0.3em;">|</span><i>{new Date(data.meta.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}</i></p>
@@ -46,7 +46,6 @@
 		font-weight: 700;
 	}
 	article {
-		max-inline-size: var(--size-content-3);
 		margin-inline: auto;
 		padding: 1em;
 
