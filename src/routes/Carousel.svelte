@@ -1,19 +1,18 @@
 <script>
   import { onMount } from 'svelte';
 
-  export let blogPosts = [];
+  let currentIndex = $state(0);
 
-  let currentIndex = 0;
+  let blogPosts = $state([]);
 
-  onMount(() => {
+  onMount(async () => {
     const interval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % (blogPosts.length + 1);
-    }, 5000);
+      if (currentIndex === 5 || currentIndex === blogPosts.length) {
+        currentIndex = -1;
+      }
+      currentIndex = currentIndex + 1;
+    }, 3000);
 
-    return () => clearInterval(interval);
-  });
-
-  async function fetchBlogPosts() {
     try {
       const response = await fetch('/api/posts.json');
       blogPosts = await response.json();
@@ -21,24 +20,65 @@
       console.error('Error loading blog posts:', error);
       blogPosts = [];
     }
-  }
 
-  onMount(fetchBlogPosts);
+    return () => clearInterval(interval);
+  });
 </script>
 
 <div class="carousel">
-  {#if currentIndex === 0}
-    <slot></slot>
+  {#if blogPosts.length === 0 || currentIndex === 0}
+    <div class="hero-content" style="padding: 5rem 0;">
+      <h1 style="color: white;">Embrace the Bare Minimum</h1>
+      <p class="hero-subtitle">Find peace, purpose, and fulfillment through simplicity</p>
+      <div class="hero-buttons">
+        <a href="/principles" class="btn" style="border: 1px solid white;">Discover Our Principles</a>
+        <a href="/blog" class="btn btn-secondary" style="background: white; color: var(--primary-color)">Read Our Blog</a>
+      </div>
+    </div>
   {:else}
-    <div class="carousel-slide">
-      <h2>{blogPosts[currentIndex - 1].title}</h2>
-      <p>{blogPosts[currentIndex - 1].description}</p>
-      <a href={`/blog/${blogPosts[currentIndex - 1].slug}`} class="btn">Read More</a>
+    <div class="carousel-slide" style="background-image: url('/blog/covers/{blogPosts[currentIndex-1].cover}'); background-size: cover; background-position: center;">
+      <div class="carousel-text">
+        
+      </div>
+      <h2 style="color: white;">{blogPosts[currentIndex-1].title}</h2>
+      <p>{blogPosts[currentIndex-1].description}</p>
+      <a href={`/blog/${blogPosts[currentIndex-1].slug}`} class="btn">Read More</a>
     </div>
   {/if}
 </div>
 
 <style>
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: white;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .btn-secondary {
+    background-color: transparent;
+    border: 2px solid white;
+  }
+  
+  .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
   .carousel {
     position: relative;
     overflow: hidden;
@@ -47,7 +87,6 @@
   }
 
   .carousel-slide {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;

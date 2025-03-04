@@ -42,18 +42,7 @@
 </svelte:head>
 
 <section class="hero">
-  <div class="container">
-    <Carousel {blogPosts}>
-      <div class="hero-content">
-        <h1>Embrace the Bare Minimum</h1>
-        <p class="hero-subtitle">Find peace, purpose, and fulfillment through simplicity</p>
-        <div class="hero-buttons">
-          <a href="/principles" class="btn" style="border: 1px solid white;">Discover Our Principles</a>
-          <a href="/blog" class="btn btn-secondary" style="background: white; color: var(--primary-color)">Read Our Blog</a>
-        </div>
-      </div>
-    </Carousel>
-  </div>
+  <Carousel />
 </section>
 
 <section class="section features-section">
@@ -113,7 +102,6 @@
   .hero {
     background-color: var(--primary-color);
     color: white;
-    padding: 5rem 0;
     text-align: center;
   }
   
