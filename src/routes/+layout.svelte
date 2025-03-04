@@ -30,7 +30,7 @@
         <li><a href="/blog">Blog</a></li>
       </ul>
       <button class="hamburger" on:click={toggleNav} aria-label="Toggle navigation">
-        <span class="hamburger-icon"></span>
+        <span class="icon-menu"></span>
       </button>
     </nav>
   </div>
