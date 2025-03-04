@@ -31,7 +31,7 @@
       <div class="blog-posts">
         {#each posts as post}
           <article class="blog-post">
-            <img class="cover" src="/blog/covers/{post.cover}" alt="{post.alt}">
+            <img class="cover" src="/blog/covers/{post.cover}" alt="{post.alt}" style="width:100%;">
             <div class="gradient"></div>
             <div class="blog-inside">
               <h2><a href={`/blog/${post.slug}`}>{post.title}</a></h2>
